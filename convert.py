@@ -163,7 +163,7 @@ def write_notes(notes, export_path):
     for note in notes:
         filepath = get_note_filepath(export_path, note)
 
-        with open(filepath, 'w') as note_file:
+        with open(filepath, 'w', encoding="utf8") as note_file:
             note_file.write(get_note_content(note))
 
         times = get_note_times(note)
@@ -174,7 +174,7 @@ def write_notes(notes, export_path):
 def main():
     stdnotes_file_path, export_path = get_args()
 
-    with open(stdnotes_file_path) as stdnotes_file:
+    with open(stdnotes_file_path, encoding="utf8") as stdnotes_file:
         stdnotes_json = json.load(stdnotes_file)
         notes = get_notes(stdnotes_json)
 
